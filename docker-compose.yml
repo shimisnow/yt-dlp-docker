@@ -1,0 +1,41 @@
+services:
+  image:
+    build: .
+    image: yt-dlp-docker:latest
+
+  convert-to-mp3:
+    image: yt-dlp-docker:latest
+    volumes:
+      - ./scripts:/scripts:ro
+      - ./source/source.txt:/source/source.txt:ro
+      - ./export:/export
+    environment:
+      SOURCE_FILE: ${SOURCE_FILE}
+      OUTPUT_DIRECTORY: ${OUTPUT_DIRECTORY}
+      AUDIO_FORMAT: ${AUDIO_FORMAT}
+      AUDIO_QUALITY: ${AUDIO_QUALITY}
+    command: ./scripts/convert-to-mp3.sh
+
+  download-video:
+    image: yt-dlp-docker:latest
+    volumes:
+      - ./scripts:/scripts:ro
+      - ./source/source.txt:/source/source.txt:ro
+      - ./export:/export
+    environment:
+      SOURCE_FILE: ${SOURCE_FILE}
+      OUTPUT_DIRECTORY: ${OUTPUT_DIRECTORY}
+      MAX_VIDEO_RESOLUTION: ${MAX_VIDEO_RESOLUTION}
+    command: ./scripts/download-video.sh
+
+  download-video-split-chapters:
+    image: yt-dlp-docker:latest
+    volumes:
+      - ./scripts:/scripts:ro
+      - ./source/source.txt:/source/source.txt:ro
+      - ./export:/export
+    environment:
+      SOURCE_FILE: ${SOURCE_FILE}
+      OUTPUT_DIRECTORY: ${OUTPUT_DIRECTORY}
+      MAX_VIDEO_RESOLUTION: ${MAX_VIDEO_RESOLUTION}
+    command: ./scripts/download-video-split-chapters.sh
