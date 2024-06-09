@@ -5,7 +5,6 @@ options=(
   '--embed-thumbnail'
   '--embed-chapters'
   '--embed-subs'
-  '--embed-info-json'
 )
 
 configs=$(printf "%s " "${options[@]}")
