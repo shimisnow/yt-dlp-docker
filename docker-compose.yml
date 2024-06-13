@@ -3,7 +3,7 @@ services:
     build: .
     image: yt-dlp-docker:latest
 
-  convert-to-mp3:
+  download-mp3:
     image: yt-dlp-docker:latest
     volumes:
       - ./scripts:/scripts:ro
@@ -14,9 +14,9 @@ services:
       OUTPUT_DIRECTORY: ${OUTPUT_DIRECTORY}
       AUDIO_FORMAT: ${AUDIO_FORMAT}
       AUDIO_QUALITY: ${AUDIO_QUALITY}
-    command: ./scripts/convert-to-mp3.sh
+    command: ./scripts/download-mp3.sh
 
-  download-video:
+  download:
     image: yt-dlp-docker:latest
     volumes:
       - ./scripts:/scripts:ro
@@ -28,7 +28,7 @@ services:
       MAX_VIDEO_RESOLUTION: ${MAX_VIDEO_RESOLUTION}
     command: ./scripts/download-video.sh
 
-  download-video-split-chapters:
+  split-chapters:
     image: yt-dlp-docker:latest
     volumes:
       - ./scripts:/scripts:ro
@@ -38,4 +38,4 @@ services:
       SOURCE_FILE: ${SOURCE_FILE}
       OUTPUT_DIRECTORY: ${OUTPUT_DIRECTORY}
       MAX_VIDEO_RESOLUTION: ${MAX_VIDEO_RESOLUTION}
-    command: ./scripts/download-video-split-chapters.sh
+    command: ./scripts/split-chapters.sh
