@@ -10,10 +10,10 @@ services:
       - ./source/source.txt:/source/source.txt:ro
       - ./export:/export
     environment:
-      SOURCE_FILE: ${SOURCE_FILE}
-      OUTPUT_DIRECTORY: ${OUTPUT_DIRECTORY}
-      AUDIO_FORMAT: ${AUDIO_FORMAT}
-      AUDIO_QUALITY: ${AUDIO_QUALITY}
+      - SOURCE_FILE
+      - OUTPUT_DIRECTORY
+      - AUDIO_FORMAT
+      - AUDIO_QUALITY
     command: ./scripts/download-mp3.sh
 
   download:
@@ -23,9 +23,9 @@ services:
       - ./source/source.txt:/source/source.txt:ro
       - ./export:/export
     environment:
-      SOURCE_FILE: ${SOURCE_FILE}
-      OUTPUT_DIRECTORY: ${OUTPUT_DIRECTORY}
-      MAX_VIDEO_RESOLUTION: ${MAX_VIDEO_RESOLUTION}
+      - SOURCE_FILE
+      - OUTPUT_DIRECTORY
+      - MAX_VIDEO_RESOLUTION
     command: ./scripts/download-video.sh
 
   split-chapters:
@@ -35,7 +35,7 @@ services:
       - ./source/source.txt:/source/source.txt:ro
       - ./export:/export
     environment:
-      SOURCE_FILE: ${SOURCE_FILE}
-      OUTPUT_DIRECTORY: ${OUTPUT_DIRECTORY}
-      MAX_VIDEO_RESOLUTION: ${MAX_VIDEO_RESOLUTION}
+      - SOURCE_FILE
+      - OUTPUT_DIRECTORY
+      - MAX_VIDEO_RESOLUTION
     command: ./scripts/split-chapters.sh
