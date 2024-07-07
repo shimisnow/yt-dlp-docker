@@ -2,9 +2,11 @@
 
 options=(
   "--format-sort res:$MAX_VIDEO_RESOLUTION,fps"
+  '--remux-video mkv'
   '--embed-thumbnail'
   '--embed-chapters'
   '--embed-subs'
+  "--concat-playlist $CONCAT_PLAYLIST"
 )
 
 configs=$(printf "%s " "${options[@]}")

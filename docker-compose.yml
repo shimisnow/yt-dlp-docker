@@ -26,6 +26,7 @@ services:
       - SOURCE_FILE
       - OUTPUT_DIRECTORY
       - MAX_VIDEO_RESOLUTION
+      - CONCAT_PLAYLIST
     command: ./scripts/download-video.sh
 
   split-chapters:
