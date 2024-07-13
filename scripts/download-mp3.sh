@@ -2,7 +2,6 @@
 
 options=(
   '--split-chapters'
-  '--format worst'
   '--extract-audio'
   "--audio-format $AUDIO_FORMAT"
   "--audio-quality $AUDIO_QUALITY"
