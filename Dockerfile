@@ -1,10 +1,10 @@
 FROM ubuntu:24.04
 
-RUN apt update -qq
+RUN apt-get update -qq
 
-RUN apt install ffmpeg -y
+RUN apt-get install -y ffmpeg
 
-RUN apt install wget -y
+RUN apt-get install -y wget
 
 RUN mkdir -p /yt-dlp
 
